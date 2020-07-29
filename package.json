@@ -1,0 +1,33 @@
+{
+  "name": "find-my-friends",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "Michael",
+  "license": "ISC",
+  "scripts": {
+    "clean": "rm dist/bundle.js",
+    "start": "nodemon ./server/index.js",
+    "dev-react": "webpack -d --watch",
+    "prod-react": "webpack -p"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "@babel/preset-react": "^7.10.4",
+    "babel-loader": "^8.1.0",
+    "@babel/core": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "css-loader": "^3.6.0",
+    "sass-loader": "^9.0.2",
+    "node-sass": "^4.14.1",
+    "style-loader": "^1.2.1",
+    "url-loader": "^4.1.0"
+  }
+}
