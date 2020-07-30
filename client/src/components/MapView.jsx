@@ -3,7 +3,7 @@ import GoogleMapReact from 'google-map-react';
 import axios from 'axios';
 import MapMarker from './MapMarker.jsx';
 // import { API_KEY } from '../../../config.js';
-const API_KEY = process.env.API_KEY;
+// const API_KEY = process.env.API_KEY;
 
 const MapView = ({name}) => {
   const [center, setCenter] = useState({
@@ -55,7 +55,7 @@ const MapView = ({name}) => {
     // Important! Always set the container height explicitly
     <div style={{ height: '100vh', width: '100%' }}>
       <GoogleMapReact
-        bootstrapURLKeys={{ key: API_KEY }}
+        bootstrapURLKeys={{ key: process.env.API_KEY }}
         defaultCenter={center}
         defaultZoom={zoom}
       >
