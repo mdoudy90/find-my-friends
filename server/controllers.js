@@ -24,4 +24,15 @@ module.exports = {
         res.sendStatus(404);
       });
   },
+  getPlaces: (req, res) => {
+    models
+      .apiGetPlaces(req.query)
+      .then((data) => {
+        res.send(data);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.sendStatus(404);
+      });
+  }
 };

@@ -28,3 +28,31 @@ h1 {
     width: fit-content;
   }
 }
+
+.place-marker {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 120px;
+
+
+  .place-marker-icon {
+    grid-row: 1;
+    height: 15px;
+    width: 15px;
+    background-color: rgb(0, 225, 255);
+    border: 2px solid rgb(155, 240, 255);
+    border-radius: 30px;
+    cursor: pointer;
+  }
+
+  p {
+    grid-row: 2;
+    background-color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 2px;
+    width: fit-content;
+    z-index: 10;
+  }
+
+}

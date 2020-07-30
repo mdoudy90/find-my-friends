@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import GoogleMapReact from 'google-map-react';
 import axios from 'axios';
 import MapMarker from './MapMarker.jsx';
-import { API_KEY } from '../../../config.js';
-// const API_KEY = process.env.API_KEY;
+import PlaceMarker from './PlaceMarker.jsx';
+import { MAPS_API_KEY } from '../../../config.js';
+// const MAPS_API_KEY = process.env.MAPS_API_KEY;
 
 const MapView = ({name}) => {
   const [center, setCenter] = useState({
@@ -12,6 +13,7 @@ const MapView = ({name}) => {
   });
   const zoom = 15;
   const [coordinates, setCoordinates] = useState({lat: 0,lng: 0});
+  const [nearbyPlaces, setNearbyPlaces] = useState();
   const [activeUserCoordinates, setActiveUserCoordinates] = useState();
 
   const getLocation = () => {
@@ -36,15 +38,28 @@ const MapView = ({name}) => {
   }, [name]);
 
   useEffect(() => {
-    let data = {name, coordinates, active: true};
-    axios.post('/liveusers/user', data);
+
+    axios.post('/liveusers/user', {
+      name,
+      coordinates,
+      active: true
+    });
+
+    axios.get('/places', {
+      params: {
+        location: `${coordinates.lat}, ${coordinates.lng}`,
+        rankby: 'distance',
+        type: 'bar' //! update to dynamic
+    }}).then(({data}) => {
+      setNearbyPlaces(data);
+    })
+
   }, [coordinates])
 
   useEffect(() => {
     const interval = setInterval(() => {
       axios.get('/liveusers/list', { name })
             .then(({data}) => {
-              console.log(data);
               setActiveUserCoordinates(data);
             });
           }, 5000);
@@ -55,7 +70,7 @@ const MapView = ({name}) => {
     // Important! Always set the container height explicitly
     <div style={{ height: '100vh', width: '100%' }}>
       <GoogleMapReact
-        bootstrapURLKeys={{ key: API_KEY }}
+        bootstrapURLKeys={{ key: MAPS_API_KEY }}
         defaultCenter={center}
         defaultZoom={zoom}
       >
@@ -77,6 +92,18 @@ const MapView = ({name}) => {
           />
           )
         })}
+
+        {!!nearbyPlaces &&
+        nearbyPlaces.map(({name, geometry}) => {
+          return (
+            <PlaceMarker
+              lat={geometry.location.lat}
+              lng={geometry.location.lng}
+              text={name}
+            />
+            )
+        })
+        }
 
       </GoogleMapReact>
     </div>
