@@ -53,8 +53,8 @@ const MapView = ({name}) => {
 
   return (
     // Important! Always set the container height explicitly
+    {!!API_KEY &&
     <div style={{ height: '100vh', width: '100%' }}>
-      {!!API_KEY &&
       <GoogleMapReact
         bootstrapURLKeys={{ key: API_KEY }}
         defaultCenter={center}
@@ -79,8 +79,8 @@ const MapView = ({name}) => {
           )
         })}
 
-      </GoogleMapReact>}
-    </div>
+      </GoogleMapReact>
+    </div>}
   );
 }
 
