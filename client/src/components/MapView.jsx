@@ -54,11 +54,12 @@ const MapView = ({name}) => {
   return (
     // Important! Always set the container height explicitly
     <div style={{ height: '100vh', width: '100%' }}>
-      {!!API_KEY && <GoogleMapReact
+      {!!API_KEY &&
+      <GoogleMapReact
         bootstrapURLKeys={{ key: API_KEY }}
         defaultCenter={center}
         defaultZoom={zoom}
-      >}
+      >
         {/* Map through all online users */}
         {!!coordinates &&
         <MapMarker
@@ -78,7 +79,7 @@ const MapView = ({name}) => {
           )
         })}
 
-      </GoogleMapReact>
+      </GoogleMapReact>}
     </div>
   );
 }
