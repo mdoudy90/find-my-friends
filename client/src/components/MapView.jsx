@@ -64,7 +64,7 @@ const MapView = ({name}) => {
         <MapMarker
           lat={coordinates.lat}
           lng={coordinates.lng}
-          text='Michael D'
+          text={name}
         />}
 
         {!!activeUserCoordinates &&
