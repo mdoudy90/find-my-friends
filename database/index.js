@@ -7,7 +7,10 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema(
   {
     name: { type: String, unique: true },
-    coordinates: {},
+    coordinates: {
+      lat: { type: Number },
+      lng: { type: Number }
+    },
     active: Boolean,
   },
   { timestamps: true },

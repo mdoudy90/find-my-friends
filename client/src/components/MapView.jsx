@@ -1,24 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import GoogleMapReact from 'google-map-react';
+import axios from 'axios';
 import MapMarker from './MapMarker.jsx';
 import { API_KEY } from '../../../config.js';
 
-const MapView = () => {
+const MapView = ({name}) => {
   const [center, setCenter] = useState({
     lat: 40.8635,
     lng: -73.9225
   });
-  const [coordinates, setCoordinates] = useState({lat: 0,lng: 0});
   const zoom = 15;
+  const [coordinates, setCoordinates] = useState({lat: 0,lng: 0});
+  const [activeUserCoordinates, setActiveUserCoordinates] = useState();
 
   const getLocation = () => {
     if (navigator.geolocation) {
-      navigator.geolocation.watchPosition((position) =>
+      navigator.geolocation.watchPosition((position) => {
         setCoordinates({
           lat: position.coords.latitude,
           lng: position.coords.longitude
         })
-      );
+      });
     } else {
       console.log("Geolocation is not supported.");
     }
@@ -26,7 +28,27 @@ const MapView = () => {
 
   useEffect(() => {
     getLocation();
-  }, [1]);
+    axios.get('/liveusers/list', { name })
+    .then(({data}) => {
+      setActiveUserCoordinates(data);
+    })
+  }, [name]);
+
+  useEffect(() => {
+    let data = {name, coordinates, active: true};
+    axios.post('/liveusers/user', data);
+  }, [coordinates])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      axios.get('/liveusers/list', { name })
+            .then(({data}) => {
+              console.log(data);
+              setActiveUserCoordinates(data);
+            });
+          }, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     // Important! Always set the container height explicitly
@@ -43,6 +65,17 @@ const MapView = () => {
           lng={coordinates.lng}
           text='Michael D'
         />}
+
+        {!!activeUserCoordinates &&
+        activeUserCoordinates.map(({name, coordinates}) => {
+          return (
+          <MapMarker
+            lat={coordinates.lat}
+            lng={coordinates.lng}
+            text={name}
+          />
+          )
+        })}
 
       </GoogleMapReact>
     </div>

@@ -12,4 +12,4 @@ app.use(bodyParser.json());
 app.use('/', express.static(path.join(__dirname, '../client/dist')));
 app.use('/', router);
 
-app.listen(port, () => console.log(`Listening at http://localhost:${port}`))
+app.listen(port, () => console.log(`Listening at http://localhost:${port}`));
