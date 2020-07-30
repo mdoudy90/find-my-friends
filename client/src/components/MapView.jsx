@@ -3,6 +3,7 @@ import GoogleMapReact from 'google-map-react';
 import axios from 'axios';
 import MapMarker from './MapMarker.jsx';
 import { API_KEY } from '../../../config.js';
+// const API_KEY = process.env.API_KEY;
 
 const MapView = ({name}) => {
   const [center, setCenter] = useState({
