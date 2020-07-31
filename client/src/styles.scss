@@ -50,6 +50,16 @@ body {
     cursor: pointer;
   }
 
+  .placeOfInterest-marker-icon {
+    grid-row: 1;
+    height: 25px;
+    width: 25px;
+    background-color: rgb(0, 255, 21);
+    border: 2px solid rgb(35, 177, 58);
+    border-radius: 30px;
+    cursor: pointer;
+  }
+
   p {
     grid-row: 2;
     background-color: #fff;

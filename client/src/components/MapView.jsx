@@ -5,7 +5,7 @@ import PlaceMarker from './PlaceMarker.jsx';
 import { MAPS_API_KEY } from '../../../config.js';
 // const MAPS_API_KEY = process.env.MAPS_API_KEY;
 
-const MapView = ({name, coordinates, activeUserData, nearbyPlaces}) => {
+const MapView = ({name, coordinates, activeUserData, nearbyPlaces, placeOfInterest}) => {
   const [center, setCenter] = useState({
     lat: 40.8635,
     lng: -73.9225
@@ -20,7 +20,6 @@ const MapView = ({name, coordinates, activeUserData, nearbyPlaces}) => {
         defaultCenter={center}
         defaultZoom={zoom}
       >
-        {/* Map through all online users */}
         {!!coordinates &&
         <MapMarker
           lat={coordinates.lat}
@@ -40,12 +39,18 @@ const MapView = ({name, coordinates, activeUserData, nearbyPlaces}) => {
         })}
 
         {!!nearbyPlaces &&
-        nearbyPlaces.map(({name, geometry}) => {
+        nearbyPlaces.map(({name, geometry, place_id}) => {
+          let isPlaceOfInterest = false;
+          if (placeOfInterest === place_id) {
+            isPlaceOfInterest = true;
+          }
+
           return (
             <PlaceMarker
               lat={geometry.location.lat}
               lng={geometry.location.lng}
               text={name}
+              isPlaceOfInterest={isPlaceOfInterest}
             />
             )
         })

@@ -87,6 +87,7 @@ const App = () => {
           coordinates={coordinates}
           activeUserData={activeUserData}
           nearbyPlaces={nearbyPlaces}
+          placeOfInterest={placeOfInterest}
         />}
       {view === 2 &&
         <PlacesView
