@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 const PromptView = ({ setUserName, setUserMood, setView }) => {
   const [question, setQuestion] = useState(1);
   const [text, setText] = useState('');
-  const [mood, setMood] = useState('antisocial');
+  const [mood, setMood] = useState('');
   const [name, setName] = useState('Anonymous');
 
   return (
@@ -27,24 +27,24 @@ const PromptView = ({ setUserName, setUserMood, setView }) => {
             <p>What are you in the mood for?</p>
             <div className='mood-choices'>
               <img
-                className={mood === 'coffee' ? 'selected' : null}
+                className={mood === 'cafe' ? 'selected' : null}
                 src='./assets/coffee-icon.png'
-                onClick={() => setMood('coffee')}
+                onClick={() => setMood('cafe')}
               />
               <img
-                className={mood === 'food' ? 'selected' : null}
+                className={mood === 'restaurant' ? 'selected' : null}
                 src='./assets/fork-icon.png'
-                onClick={() => setMood('food')}
+                onClick={() => setMood('restaurant')}
               />
               <img
-                className={mood === 'drinks' ? 'selected' : null}
+                className={mood === 'bar' ? 'selected' : null}
                 src='./assets/cocktail-icon.png'
-                onClick={() => setMood('drinks')}
+                onClick={() => setMood('bar')}
               />
               <img
-                className={mood === 'dancing' ? 'selected' : null}
+                className={mood === 'night_club' ? 'selected' : null}
                 src='./assets/music-icon.png'
-                onClick={() => setMood('dancing')}
+                onClick={() => setMood('night_club')}
               />
               <img
                 className={mood === 'sleep' ? 'selected' : null}
@@ -55,7 +55,7 @@ const PromptView = ({ setUserName, setUserMood, setView }) => {
             <button
               onClick={() => {
                 setUserName(name);
-                setUserMood(mood);
+                mood ? setUserMood(mood) : setUserMood('sleep');
                 setView(1);
               }}>
               Submit

@@ -12,6 +12,7 @@ const userSchema = new Schema(
       lat: { type: Number },
       lng: { type: Number }
     },
+    mood: String,
     active: Boolean,
   },
   { timestamps: true },

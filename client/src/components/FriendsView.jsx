@@ -12,9 +12,11 @@ const FriendsView = ({activeUserData, coordinates}) => {
             <div className = 'friend-row'>
               <p>{user.name}</p>
               <p>{`${distanceAway} miles away`}</p>
-              <div>
-                <p>Coffee?</p>
-              </div>
+              { user.mood === 'cafe' && <img src = './assets/coffee-icon.png'/> }
+              { user.mood === 'night_club' && <img src = './assets/music-icon.png'/> }
+              { user.mood === 'restaurant' && <img src = './assets/fork-icon.png'/> }
+              { user.mood === 'bar' && <img src = './assets/cocktail-icon.png'/> }
+              { user.mood === 'sleep' && <img src = './assets/sleep-icon.png'/> }
             </div>
           )
         })}

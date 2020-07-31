@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import PromptView from './components/PromptView.jsx';
 import MapView from './components/MapView.jsx';
+import PlacesView from './components/PlacesView.jsx';
 import FriendsView from './components/FriendsView.jsx';
 import BottomMenu from './components/BottomMenu.jsx';
 
@@ -39,17 +40,20 @@ const App = () => {
     axios.post('/liveusers/user', {
       name,
       coordinates,
+      mood,
       active: true
     });
 
-    axios.get('/places', {
-      params: {
-        location: `${coordinates.lat}, ${coordinates.lng}`,
-        rankby: 'distance',
-        type: 'bar' //! update to dynamic
-    }}).then(({data}) => {
-      setNearbyPlaces(data);
-    })
+    {!!mood && mood !== 'sleep' &&
+      axios.get('/places', {
+        params: {
+          location: `${coordinates.lat}, ${coordinates.lng}`,
+          rankby: 'distance',
+          type: mood
+      }}).then(({data}) => {
+        setNearbyPlaces(data);
+      })
+  }
 
   }, [coordinates])
 
@@ -62,11 +66,6 @@ const App = () => {
           }, 5000);
     return () => clearInterval(interval);
   }, []);
-
-  // useEffect(() => {
-  //   let namePrompt = prompt('Please enter your name:') || 'anonymous';
-  //   setName(namePrompt);
-  // }, []);
 
   useEffect(() => {
     getLocation();
@@ -88,7 +87,11 @@ const App = () => {
           activeUserData={activeUserData}
           nearbyPlaces={nearbyPlaces}
         />}
-      {view === 2 && <></>}
+      {view === 2 &&
+        <PlacesView
+          coordinates={coordinates}
+          nearbyPlaces={nearbyPlaces}
+        />}
       {view === 3 &&
         <FriendsView
           activeUserData = {activeUserData}
