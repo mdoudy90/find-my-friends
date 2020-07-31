@@ -105,7 +105,7 @@ body {
     grid-template-rows: auto;
 
     p {
-      font-size: 3rem;
+      font-size: 2rem;
     }
 
     .friend-row {
@@ -114,10 +114,6 @@ body {
       border-bottom: .2rem solid #63a4d2;
       padding: .5rem 1rem .5rem 3rem;
       align-items: center;
-
-      .friend-distance {
-        font-size: 1.5rem;
-      }
 
       img {
         grid-column: 3;
