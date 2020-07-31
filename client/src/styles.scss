@@ -86,6 +86,7 @@ body {
 .friends-view-container {
   height: 92vh;
   overflow-y: auto;
+  background-color: #e9f2ff;
 
   .friends-view {
     display: grid;
@@ -98,16 +99,22 @@ body {
 
     .friend-row {
       display: grid;
-      grid-template-columns: 1fr 20rem 10rem;
+      grid-template-columns: 1fr 25rem 10rem;
       border-bottom: .2rem solid #63a4d2;
       padding: .5rem 1rem .5rem 3rem;
-      background-color: #a6dbff;
       align-items: center;
+
+      .friend-distance {
+        font-size: 1.5rem;
+      }
 
       img {
         grid-column: 3;
         justify-self: center;
         align-self: center;
+        background-color: #a6c3ec;
+        padding: 1rem;
+        border-radius: .8rem;
       }
     }
   }
@@ -136,12 +143,12 @@ body {
         border: .1rem solid #a8b6cc;
         background-color: #e9f2ff;
         border-radius: .8rem;
-      }
 
-      img {
-        width: 100%;
-        height: 30rem;
-        object-fit: cover;
+        .place-banner {
+          width: 100%;
+          height: 30rem;
+          object-fit: cover;
+        }
       }
 
       .place-name {
