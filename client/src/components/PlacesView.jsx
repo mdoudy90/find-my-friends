@@ -4,7 +4,7 @@ import distance from '../helpers/distanceCalculator.js';
 import FriendsView from './FriendsView.jsx';
 
 const PlacesView = ({nearbyPlaces, coordinates, setPlaceOfInterest, setView, activeUserData, mood}) => {
-  const [friendsDisplay, toggleFriendsDisplay] = useState(false);
+  const [friendsDisplay, setFriendsDisplay] = useState();
   return (
     <div className = 'places-view-container'>
       <div className = 'places-view'>
@@ -28,10 +28,12 @@ const PlacesView = ({nearbyPlaces, coordinates, setPlaceOfInterest, setView, act
                     setPlaceOfInterest(place_id);
                     setView(1);
                   }}/>
-                  <img src = './assets/invite-icon.png' onClick={() =>
-                    toggleFriendsDisplay(!friendsDisplay)}/>
+                  <img src = './assets/invite-icon.png' onClick={() => {
+                    friendsDisplay === place_id ? setFriendsDisplay() : setFriendsDisplay(place_id);
+                  }
+                  }/>
                 </div>
-                {!!friendsDisplay &&
+                {friendsDisplay === place_id &&
                   <div>
                     <FriendsView
                       activeUserData = {activeUserData}

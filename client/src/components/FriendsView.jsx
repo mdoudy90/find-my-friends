@@ -4,7 +4,7 @@ import distance from '../helpers/distanceCalculator.js';
 const FriendsView = ({activeUserData, coordinates, moodToFilter}) => {
 
   return (
-    <div className = 'friends-view-container'>
+    <div className = {!moodToFilter ? 'friends-view-container' : 'friends-view-container-nested'}>
       <div className = 'friends-view'>
         {activeUserData.map((user) => {
           if (!moodToFilter || (!!moodToFilter && user.mood === moodToFilter)) {

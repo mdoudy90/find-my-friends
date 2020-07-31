@@ -94,8 +94,17 @@ body {
     height: 100px;
   }
 }
+
 .friends-view-container {
   height: 92vh;
+}
+
+.friends-view-container-nested {
+  max-height: 50vh;
+}
+
+.friends-view-container,
+.friends-view-container-nested {
   overflow-y: auto;
   background-color: #e9f2ff;
 
