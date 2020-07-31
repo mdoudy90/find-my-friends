@@ -2,12 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { PLACES_API_KEY } from '../../../config.js';
 import distance from '../helpers/distanceCalculator.js';
 
-const PlacesView = ({nearbyPlaces, coordinates}) => {
+const PlacesView = ({nearbyPlaces, coordinates, setPlaceOfInterest, setView}) => {
   return (
     <div className = 'places-view-container'>
       <div className = 'places-view'>
-
-{/* photos[0].photo_reference */}
 
         {!!nearbyPlaces && !!nearbyPlaces.length ? nearbyPlaces.map(({name, geometry, rating, vicinity, place_id, photos}) => {
 
@@ -24,7 +22,10 @@ const PlacesView = ({nearbyPlaces, coordinates}) => {
                 {!!photoUrl && <img className = 'place-banner' src = {photoUrl}/>}
                 <div className = 'place-component-footer'>
                   <p className = 'place-rating'>{`Rating: ${rating}`}</p>
-                  <img src = './assets/map-icon.png'/>
+                  <img src = './assets/map-icon.png' onClick={() => {
+                    setPlaceOfInterest(place_id);
+                    setView(1);
+                  }}/>
                   <img src = './assets/invite-icon.png'/>
                 </div>
               </div>

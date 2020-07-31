@@ -13,6 +13,7 @@ const App = () => {
   const [coordinates, setCoordinates] = useState({lat: 0,lng: 0});
   const [nearbyPlaces, setNearbyPlaces] = useState();
   const [activeUserData, setActiveUserData] = useState();
+  const [placeOfInterest, setPlaceOfInterest] = useState();
 
   const getLocation = () => {
     if (navigator.geolocation) {
@@ -91,6 +92,8 @@ const App = () => {
         <PlacesView
           coordinates={coordinates}
           nearbyPlaces={nearbyPlaces}
+          setPlaceOfInterest={setPlaceOfInterest}
+          setView={setView}
         />}
       {view === 3 &&
         <FriendsView
