@@ -150,7 +150,7 @@ body {
     height: 100vh;
 
     display: grid;
-    grid-template-rows: 20rem 1fr 1fr 1fr 20rem;
+    grid-template-rows: 1rem 1fr 1fr 1fr 50rem;
     align-items: center;
 
     p {
@@ -158,7 +158,7 @@ body {
       color: #fff;
       font-size: 10rem;
       text-align: center;
-      margin-bottom: 6rem;
+      margin-bottom: 2rem;
     }
 
     button, input[type="submit"], input[type="reset"] {
