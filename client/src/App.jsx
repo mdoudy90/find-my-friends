@@ -95,11 +95,14 @@ const App = () => {
           nearbyPlaces={nearbyPlaces}
           setPlaceOfInterest={setPlaceOfInterest}
           setView={setView}
+          activeUserData={activeUserData}
+          mood={mood}
         />}
       {view === 3 &&
         <FriendsView
           activeUserData = {activeUserData}
           coordinates = {coordinates}
+          moodToFilter = {null}
         />}
         <BottomMenu setView = {setView}/>
       </>

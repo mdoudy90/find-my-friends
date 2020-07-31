@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { PLACES_API_KEY } from '../../../config.js';
 import distance from '../helpers/distanceCalculator.js';
+import FriendsView from './FriendsView.jsx';
 
-const PlacesView = ({nearbyPlaces, coordinates, setPlaceOfInterest, setView}) => {
+const PlacesView = ({nearbyPlaces, coordinates, setPlaceOfInterest, setView, activeUserData, mood}) => {
+  const [friendsDisplay, toggleFriendsDisplay] = useState(false);
   return (
     <div className = 'places-view-container'>
       <div className = 'places-view'>
@@ -28,6 +30,15 @@ const PlacesView = ({nearbyPlaces, coordinates, setPlaceOfInterest, setView}) =>
                   }}/>
                   <img src = './assets/invite-icon.png'/>
                 </div>
+                {!!friendsDisplay &&
+                  <div>
+                    <FriendsView
+                      activeUserData = {activeUserData}
+                      coordinates = {coordinates}
+                      moodToFilter = {mood}
+                    />
+                  </div>
+                }
               </div>
             </div>
           )
