@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+const host = process.env.MONGODB_URI || 'mongodb://localhost'
 
-mongoose.connect('mongodb://localhost/findMyFriends', { useNewUrlParser: true });
+mongoose.connect(`${host}`);
 
 const Schema = mongoose.Schema;
 
@@ -11,6 +12,7 @@ const userSchema = new Schema(
       lat: { type: Number },
       lng: { type: Number }
     },
+    mood: String,
     active: Boolean,
   },
   { timestamps: true },
