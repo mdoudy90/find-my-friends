@@ -17,11 +17,13 @@ const PlacesView = ({nearbyPlaces, coordinates}) => {
 
           return (
             <div className = 'place-row'>
-              {!!photoUrl && <img src = {photoUrl}/>}
-              <p className = 'place-name'>{name}</p>
-              <p className = 'place-address'>{vicinity}</p>
-              <p className = 'place-distance'>{`${distanceAway} miles away`}</p>
-              <p className = 'place-rating'>{`Rating: ${rating}`}</p>
+              <div className = 'place-component'>
+                <p className = 'place-distance'>{`${distanceAway} miles away`}</p>
+                <p className = 'place-name'>{name}</p>
+                <p className = 'place-address'>{vicinity}</p>
+                {!!photoUrl && <img src = {photoUrl}/>}
+                <p className = 'place-rating'>{`Rating: ${rating}`}</p>
+              </div>
             </div>
           )
         }) : <p className = 'loading-text'>{`¯\_(ツ)_/¯`}</p>}

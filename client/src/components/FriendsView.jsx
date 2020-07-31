@@ -7,7 +7,7 @@ const FriendsView = ({activeUserData, coordinates}) => {
     <div className = 'friends-view-container'>
       <div className = 'friends-view'>
         {activeUserData.map((user) => {
-          const distanceAway = Math.round(distance(coordinates.lat, coordinates.lng, user.coordinates.lat, user.coordinates.lng));
+          const distanceAway = distance(coordinates.lat, coordinates.lng, user.coordinates.lat, user.coordinates.lng).toFixed(2);
           return (
             <div className = 'friend-row'>
               <p>{user.name}</p>
