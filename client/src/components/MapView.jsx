@@ -1,74 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import GoogleMapReact from 'google-map-react';
-import axios from 'axios';
 import MapMarker from './MapMarker.jsx';
 import PlaceMarker from './PlaceMarker.jsx';
 import { MAPS_API_KEY } from '../../../config.js';
 // const MAPS_API_KEY = process.env.MAPS_API_KEY;
 
-const MapView = ({name}) => {
+const MapView = ({name, coordinates, activeUserData, nearbyPlaces}) => {
   const [center, setCenter] = useState({
     lat: 40.8635,
     lng: -73.9225
   });
   const zoom = 15;
-  const [coordinates, setCoordinates] = useState({lat: 0,lng: 0});
-  const [nearbyPlaces, setNearbyPlaces] = useState();
-  const [activeUserCoordinates, setActiveUserCoordinates] = useState();
-
-  const getLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.watchPosition((position) => {
-        setCoordinates({
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        })
-      });
-    } else {
-      console.log("Geolocation is not supported.");
-    }
-  }
-
-  useEffect(() => {
-    getLocation();
-    axios.get('/liveusers/list', { name })
-    .then(({data}) => {
-      setActiveUserCoordinates(data);
-    })
-  }, [name]);
-
-  useEffect(() => {
-
-    axios.post('/liveusers/user', {
-      name,
-      coordinates,
-      active: true
-    });
-
-    axios.get('/places', {
-      params: {
-        location: `${coordinates.lat}, ${coordinates.lng}`,
-        rankby: 'distance',
-        type: 'bar' //! update to dynamic
-    }}).then(({data}) => {
-      setNearbyPlaces(data);
-    })
-
-  }, [coordinates])
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      axios.get('/liveusers/list', { name })
-            .then(({data}) => {
-              setActiveUserCoordinates(data);
-            });
-          }, 5000);
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     // Important! Always set the container height explicitly
-    <div style={{ height: '100vh', width: '100%' }}>
+    <div style={{ height: '92vh', width: '100%' }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: MAPS_API_KEY }}
         defaultCenter={center}
@@ -82,8 +28,8 @@ const MapView = ({name}) => {
           text={name}
         />}
 
-        {!!activeUserCoordinates &&
-        activeUserCoordinates.map(({name, coordinates}) => {
+        {!!activeUserData &&
+        activeUserData.map(({name, coordinates}) => {
           return (
           <MapMarker
             lat={coordinates.lat}
