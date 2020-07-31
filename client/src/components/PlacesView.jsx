@@ -23,7 +23,7 @@ const PlacesView = ({nearbyPlaces, coordinates, setPlaceOfInterest, setView, act
                 <p className = 'place-address'>{vicinity}</p>
                 {!!photoUrl && <img className = 'place-banner' src = {photoUrl}/>}
                 <div className = 'place-component-footer'>
-                  <p className = 'place-rating'>{`Rating: ${rating}`}</p>
+                  {!!rating ? <p className = 'place-rating'>{`Rating: ${rating}`}</p> : <p></p>}
                   <img src = './assets/map-icon.png' onClick={() => {
                     setPlaceOfInterest(place_id);
                     setView(1);
