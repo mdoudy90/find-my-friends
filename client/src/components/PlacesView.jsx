@@ -21,7 +21,7 @@ const PlacesView = ({nearbyPlaces, coordinates}) => {
                 <p className = 'place-distance'>{`${distanceAway} miles away`}</p>
                 <p className = 'place-name'>{name}</p>
                 <p className = 'place-address'>{vicinity}</p>
-                {!!photoUrl && <img lassName = 'place-banner' src = {photoUrl}/>}
+                {!!photoUrl && <img className = 'place-banner' src = {photoUrl}/>}
                 <div className = 'place-component-footer'>
                   <p className = 'place-rating'>{`Rating: ${rating}`}</p>
                   <img src = './assets/map-icon.png'/>
