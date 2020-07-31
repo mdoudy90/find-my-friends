@@ -160,8 +160,14 @@ body {
         padding: 0 1rem;
       }
 
-      .place-rating {
-        padding: 0 1rem;
+      .place-component-footer {
+        display: grid;
+        grid-template-columns: 1fr 10rem 10rem;
+        .place-rating {
+          padding: 0 1rem;
+          grid-column: 1;
+        }
+
       }
 
     }

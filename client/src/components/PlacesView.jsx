@@ -22,7 +22,11 @@ const PlacesView = ({nearbyPlaces, coordinates}) => {
                 <p className = 'place-name'>{name}</p>
                 <p className = 'place-address'>{vicinity}</p>
                 {!!photoUrl && <img src = {photoUrl}/>}
-                <p className = 'place-rating'>{`Rating: ${rating}`}</p>
+                <div className = 'place-component-footer'>
+                  <p className = 'place-rating'>{`Rating: ${rating}`}</p>
+                  <img src = './assets/map-icon.png'/>
+                  <img src = './assets/invite-icon.png'/>
+                </div>
               </div>
             </div>
           )
