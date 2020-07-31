@@ -162,14 +162,17 @@ body {
 
       .place-component-footer {
         display: grid;
-        grid-template-columns: 1fr 10rem 10rem;
+        grid-template-columns: 1fr 6rem 6rem;
         .place-rating {
           padding: 0 1rem;
           grid-column: 1;
         }
 
         img {
-          height: 8rem;
+          height: 3rem;
+          width: 3rem;
+          align-self: center;
+          justify-self: start;
         }
 
       }
