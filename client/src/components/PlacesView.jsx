@@ -28,7 +28,8 @@ const PlacesView = ({nearbyPlaces, coordinates, setPlaceOfInterest, setView, act
                     setPlaceOfInterest(place_id);
                     setView(1);
                   }}/>
-                  <img src = './assets/invite-icon.png'/>
+                  <img src = './assets/invite-icon.png' onClick={() =>
+                    toggleFriendsDisplay(!friendsDisplay)}/>
                 </div>
                 {!!friendsDisplay &&
                   <div>
