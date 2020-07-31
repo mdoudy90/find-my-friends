@@ -7,9 +7,7 @@ const PlaceMarker = ({ text, isPlaceOfInterest }) => {
       <div className = {isPlaceOfInterest ? 'placeOfInterest-marker-icon' : 'place-marker-icon'}
       onClick={() => {
         toggleHighlighted(!highlighted);
-        setTimeout(() => {
-          toggleHighlighted(!highlighted);
-        }, 5000);
+        setTimeout(function(){ toggleHighlighted(!highlighted); }, 3000);
         }
       }
       ></div>
