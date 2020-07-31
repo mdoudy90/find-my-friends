@@ -65,6 +65,8 @@ body {
 
 .bottom-menu {
   display: grid;
+  position: absolute;
+  bottom: 0;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 8vh;
   align-items: center;
