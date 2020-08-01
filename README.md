@@ -1,31 +1,10 @@
-# find-my-friends
+# Find My Friends
 
-Empty project.
+Mobile application to help find a local place to go to with your friends.
+- Shows live geolocations and place preferences of all active users
+- Shows places near your location depending on your preferences
 
-## Building and running on localhost
+## Demo
 
-First install dependencies:
+Add heroku url here
 
-```sh
-npm install
-```
-
-To create a production build:
-
-```sh
-npm run build-prod
-```
-
-To create a development build:
-
-```sh
-npm run build-dev
-```
-
-## Running
-
-Open the file `dist/index.html` in your browser
-
-## Credits
-
-Made with [createapp.dev](https://createapp.dev/)
