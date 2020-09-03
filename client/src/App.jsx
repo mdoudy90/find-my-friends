@@ -12,6 +12,7 @@ const App = () => {
   const [view, setView] = useState(0);
   const [coordinates, setCoordinates] = useState({lat: 0,lng: 0});
   const [prevCoordinates, setPrevCoordinates] = useState({lat: 0,lng: 0});
+  const [hasRenderedPlacesOnce, toggleHasRenderedPlacesOnce] = useState(false);
   const [nearbyPlaces, setNearbyPlaces] = useState();
   const [activeUserData, setActiveUserData] = useState();
   const [placeOfInterest, setPlaceOfInterest] = useState();
@@ -49,8 +50,9 @@ const App = () => {
     // perform logic after a set distance traveled
     let x1 = coordinates.lat, y1 = coordinates.lng;
     let x2 = prevCoordinates.lat, y2 = prevCoordinates.lng;
-    if (Math.sqrt(((x2 - x1) ** 2) + ((y2 - y1) ** 2)) > 0.003) {
+    if (!hasRenderedPlacesOnce || Math.sqrt(((x2 - x1) ** 2) + ((y2 - y1) ** 2)) > 0.003) {
 
+      toggleHasRenderedPlacesOnce(true);
       setPrevCoordinates(coordinates);
 
       {!!mood && mood !== 'sleep' &&
