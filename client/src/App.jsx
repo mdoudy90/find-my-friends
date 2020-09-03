@@ -47,9 +47,9 @@ const App = () => {
     });
 
     // perform logic after a set distance traveled
-    // let x1 = coordinates.lat, y1 = coordinates.lng;
-    // let x2 = prevCoordinates.lat, y2 = prevCoordinates.lng;
-    // if (Math.sqrt(((x2 - x1) ** 2) + ((y2 - y1) ** 2)) > 0.003) {
+    let x1 = coordinates.lat, y1 = coordinates.lng;
+    let x2 = prevCoordinates.lat, y2 = prevCoordinates.lng;
+    if (Math.sqrt(((x2 - x1) ** 2) + ((y2 - y1) ** 2)) > 0.003) {
 
       setPrevCoordinates(coordinates);
 
@@ -63,7 +63,7 @@ const App = () => {
           setNearbyPlaces(data);
         })
       }
-    // }
+    }
 
   }, [coordinates])
 
