@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-// import { PLACES_API_KEY } from '../../../config.js';
+import { hash } from '../../../config.js';
 import distance from '../helpers/distanceCalculator.js';
 import FriendsView from './FriendsView.jsx';
-const PLACES_API_KEY = process.env.API_KEY;
 
 const PlacesView = ({nearbyPlaces, coordinates, setPlaceOfInterest, setView, activeUserData, mood}) => {
   const [friendsDisplay, setFriendsDisplay] = useState();
@@ -14,7 +13,7 @@ const PlacesView = ({nearbyPlaces, coordinates, setPlaceOfInterest, setView, act
 
           const distanceAway = distance(coordinates.lat, coordinates.lng, geometry.location.lat, geometry.location.lng).toFixed(2);
 
-          const photoUrl = !!photos && !!photos.length ? `https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=${photos[0].photo_reference}&key=${PLACES_API_KEY}` : null;
+          const photoUrl = !!photos && !!photos.length ? `https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference=${photos[0].photo_reference}&key=${hash}` : null;
 
           return (
             <div className = 'place-row'>
