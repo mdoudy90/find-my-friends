@@ -1,3 +1,3 @@
 module.exports = {
-  hash: 'GOOGLE API KEY TO ADD'
+  hash: 'AIzaSyD4R0E82mvkm-qCuxMaku0MHSAe_RhRIco'
 }
