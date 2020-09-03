@@ -16,7 +16,7 @@ const MapView = ({name, coordinates, activeUserData, nearbyPlaces, placeOfIntere
 
     // Important! Always set the container height explicitly
     <div style={{ height: '92vh', width: '100%' }}>
-      {console.log('HERE: ', process.env.NODE_ENV)}
+      {console.log('HERE: ', process.env.REACT_APP_API_KEY)}
       <GoogleMapReact
         bootstrapURLKeys={{ key: MAPS_API_KEY }}
         defaultCenter={center}
