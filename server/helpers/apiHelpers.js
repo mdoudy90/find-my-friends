@@ -1,5 +1,5 @@
 const axios = require('axios');
-const { PLACES_API_KEY } = require('../../config.js');
+const { hash } = require('../../config.js');
 const API = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json';
 
 module.exports = {
@@ -10,7 +10,7 @@ module.exports = {
           location: data.location,
           rankby: data.rankby || 'distance',
           type: data.type,
-          key: PLACES_API_KEY,
+          key: hash,
           opennow: true,
         },
       })
