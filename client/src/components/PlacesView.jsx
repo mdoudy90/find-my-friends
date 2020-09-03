@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { PLACES_API_KEY } from '../../../config.js';
+// import { PLACES_API_KEY } from '../../../config.js';
 import distance from '../helpers/distanceCalculator.js';
 import FriendsView from './FriendsView.jsx';
+const PLACES_API_KEY = process.env.API_KEY;
 
 const PlacesView = ({nearbyPlaces, coordinates, setPlaceOfInterest, setView, activeUserData, mood}) => {
   const [friendsDisplay, setFriendsDisplay] = useState();

@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import GoogleMapReact from 'google-map-react';
 import MapMarker from './MapMarker.jsx';
 import PlaceMarker from './PlaceMarker.jsx';
-import { MAPS_API_KEY } from '../../../config.js';
-// const MAPS_API_KEY = process.env.MAPS_API_KEY;
+// import { MAPS_API_KEY } from '../../../config.js';
+const MAPS_API_KEY = process.env.REACT_APP_API_KEY;
 
 const MapView = ({name, coordinates, activeUserData, nearbyPlaces, placeOfInterest}) => {
   const [center, setCenter] = useState({
@@ -13,8 +13,10 @@ const MapView = ({name, coordinates, activeUserData, nearbyPlaces, placeOfIntere
   const zoom = 15;
 
   return (
+
     // Important! Always set the container height explicitly
     <div style={{ height: '92vh', width: '100%' }}>
+      {console.log('HERE: ', process.env.NODE_ENV)}
       <GoogleMapReact
         bootstrapURLKeys={{ key: MAPS_API_KEY }}
         defaultCenter={center}
