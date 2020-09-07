@@ -71,7 +71,7 @@ const App = () => {
         coordinates,
         mood,
         active: false
-      });
+      })
     )
 
   }, [coordinates])
