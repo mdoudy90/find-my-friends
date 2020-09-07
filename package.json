@@ -11,7 +11,7 @@
   "license": "ISC",
   "scripts": {
     "start": "node server/index.js",
-    "heroku-postbuild": "webpack -p",
+    "heroku-postbuild": "webpack -d",
     "dev-react": "webpack -d --watch",
     "prod-react": "webpack -p"
   },
