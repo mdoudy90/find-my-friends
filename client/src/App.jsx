@@ -65,7 +65,7 @@ const App = () => {
       }
     }
 
-    return (
+    return ( () =>
       axios.post('/liveusers/user', {
         name,
         coordinates,
