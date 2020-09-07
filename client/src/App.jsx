@@ -65,6 +65,15 @@ const App = () => {
       }
     }
 
+    return (
+      axios.post('/liveusers/user', {
+        name,
+        coordinates,
+        mood,
+        active: false
+      });
+    )
+
   }, [coordinates])
 
   useEffect(() => {
