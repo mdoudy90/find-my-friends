@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const PromptView = ({ setUserName, setUserMood, setView }) => {
+const PromptView = ({ setUserName, setUserMood, setView, toggleIsSharingData }) => {
   const [question, setQuestion] = useState(1);
   const [text, setText] = useState('');
   const [mood, setMood] = useState('');
@@ -54,11 +54,31 @@ const PromptView = ({ setUserName, setUserMood, setView }) => {
             </div>
             <button
               onClick={() => {
-                setUserName(name);
-                mood ? setUserMood(mood) : setUserMood('sleep');
-                setView(1);
+                setQuestion(3);
               }}>
               Submit
+            </button>
+          </>
+        )}
+        {question === 3 && (
+          <>
+            <p className='prompt-consent'>Do you consent to share your live geolocation while using this app?</p>
+            <button
+              onClick={() => {
+                toggleIsSharingData(true);
+                mood ? setUserMood(mood) : setUserMood('sleep');
+                setUserName(name);
+                setView(1);
+              }}>
+              Yes
+            </button>
+            <button
+              onClick={() => {
+                mood ? setUserMood(mood) : setUserMood('sleep');
+                setUserName(name);
+                setView(1);
+              }}>
+              No
             </button>
           </>
         )}

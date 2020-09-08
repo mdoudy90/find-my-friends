@@ -261,6 +261,11 @@ body {
       border-radius: 1rem;
     }
 
+    .prompt-consent {
+      grid-column: 1 / span 2;
+      font-size: 8rem;
+    }
+
     .mood-choices {
       display: grid;
       grid-row: 3;

@@ -10,6 +10,7 @@ const App = () => {
   const [name, setName] = useState();
   const [mood, setMood] = useState();
   const [view, setView] = useState(0);
+  const [isSharingData, toggleIsSharingData] = useState(false);
   const [coordinates, setCoordinates] = useState({ lat: 0, lng: 0 });
   const [prevCoordinates, setPrevCoordinates] = useState({ lat: 0, lng: 0 });
   const [nearbyPlaces, setNearbyPlaces] = useState();
@@ -17,15 +18,17 @@ const App = () => {
   const [placeOfInterest, setPlaceOfInterest] = useState();
 
   const getLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.watchPosition((position) => {
-        setCoordinates({
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
+    if (isSharingData) {
+      if (navigator.geolocation) {
+        navigator.geolocation.watchPosition((position) => {
+          setCoordinates({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          });
         });
-      });
-    } else {
-      console.log('Geolocation is not supported.');
+      } else {
+        console.log('Geolocation is not supported.');
+      }
     }
   };
 
@@ -68,15 +71,6 @@ const App = () => {
             });
       }
     }
-
-    return () => {
-      axios.post('/liveusers/user', {
-        name,
-        coordinates,
-        mood,
-        active: false,
-      });
-    };
   }, [coordinates]);
 
   useEffect(() => {
@@ -97,7 +91,7 @@ const App = () => {
 
   return (
     <>
-      {view === 0 && <PromptView setUserName={setName} setUserMood={setMood} setView={setView} />}
+      {view === 0 && <PromptView setUserName={setName} setUserMood={setMood} setView={setView} toggleIsSharingData={toggleIsSharingData}/>}
       {!!name && (
         <>
           {view === 1 && (
