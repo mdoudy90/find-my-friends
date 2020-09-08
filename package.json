@@ -7,7 +7,7 @@
   "description": "",
   "main": "index.js",
   "keywords": [],
-  "author": "Michael",
+  "author": "Michael Doudy",
   "license": "ISC",
   "scripts": {
     "start": "node server/index.js",
