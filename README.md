@@ -11,9 +11,9 @@ User latitude and longitude coordinates are pulled in real-time using the [HTML 
 <br>
 
 ## Table of Contents
-1. [Tech Stack](##Tech-Stack)
+1. [Tech Stack](#Tech-Stack)
 2. [API Used](#API-Used)
-3. [Components](##Components)
+3. [Components](#Components)
 
 ---
 
@@ -35,14 +35,7 @@ User latitude and longitude coordinates are pulled in real-time using the [HTML 
 
 ## Components
 
+|Map |Nearby Place Recommendations |Friends Listing|
+|:---:|:---:|:---:|
 | ![](readme-assets/FMF1.png)  |  ![](readme-assets/FMF2.png) | ![](readme-assets/FMF3.png) |
-|---|---|---|
-
-### Map
->Interactive map component that displays all active users' live locations and nearby place markers.
-
-### Nearby Place Recommendations
->Displays 20 nearby recommended places based on the user's selected mood, with the ability to click and view the place on the map.
-
-### Friends Listing
->Displays the distance between the user and other active users along with their current moods.
+|Interactive map component that displays all active users' live locations and nearby place markers.|Displays 20 nearby recommended places based on the user's selected mood, with the ability to click and view the place on the map.|Displays the distance between the user and other active users along with their current moods.|
