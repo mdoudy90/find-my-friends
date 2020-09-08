@@ -11,9 +11,9 @@ User latitude and longitude coordinates are pulled in real-time using the [HTML 
 <br>
 
 ## Table of Contents
-1. [Tech Stack](##Tech-Stack)
+1. [Tech Stack](#Tech-Stack)
 2. [API Used](#API-Used)
-3. [Components](##Components)
+3. [Components](#Components)
 
 ---
 
